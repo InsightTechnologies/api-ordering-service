@@ -2,9 +2,9 @@ package com.miracle.ordering.exception;
 
 import org.springframework.http.HttpStatus;
 
-import com.miracle.exception.GatewayServiceException;
+import com.miracle.exception.APIFrameworkException;
 
-public class OrderingException extends GatewayServiceException {
+public class OrderingException extends APIFrameworkException {
 
 	/**
 	 * 

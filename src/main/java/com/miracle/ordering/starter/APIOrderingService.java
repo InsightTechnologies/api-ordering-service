@@ -1,7 +1,9 @@
-package com.miracle.order.application;
+package com.miracle.ordering.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -11,12 +13,18 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
+@ComponentScan({ "com.miracle.database.connection", "com.miracle.controller", "com.miracle.config",
+		"com.miracle.utility", "com.miracle.ordering.*" })
 @EnableSwagger2
-@ComponentScan(basePackages = "com.miracle")
-public class ReleasePlanApplication {
+public class APIOrderingService extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReleasePlanApplication.class, args);
+		SpringApplication.run(APIOrderingService.class, args);
+	}
+
+	@Override
+	public SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(APIOrderingService.class);
 	}
 
 	@Bean
